@@ -22,47 +22,44 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+# userテーブル
 |Column|Type|Options|
 |:--:|:--:|:--:|
 |password|string|null: false|
 |name|string|null: false|
-|E-mail|string|null: false|
+|E-mail|string|null:false , unique: true|
 
+# Association
 - has_many :groups_users
 - has_many :groups, through: :groups_users
 - has_many :comments
-- has_many :tweets
 
+# commentテーブル
 |Column|Type|Options|
 |:--:|:--:|:--:|
-|comment|integer|null: false|
+|comment|text|null: false|
+|image|text||
 |user_id|integer|null: false, foreign_key: true|
 
-- has_many :tweets
+# Association
 - belongs_to :user
 
+# groupテーブル
 |Column|Type|Options|
 |:--:|:--:|:--:|
 |group|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
+# Association
 - has_many :groups_users
 - has_many :users, through: :groups_users
 
-|Column|Type|Options|
-|:--:|:--:|:--:|
-|image|text|null: false|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-
-- belongs_to :users
-- has_many :comments
-
+# groups_usersテーブル
 |Column|Type|Options|
 |:--:|:--:|:--:|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
+# Association
 - belongs_to :group
 - belongs_to :user
