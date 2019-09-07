@@ -23,3 +23,39 @@ Things you may want to cover:
 
 * ...
 
+class user < ActiveRecord::Base
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|E-mail|string|null: false|
+
+  has_many :room
+  has_many :comment
+  has_many :tweet
+
+class comment < ActiveRecord::Base
+|Column|Type|Options|
+|------|----|-------|
+|comment|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+  has_many :tweet
+  belongs_to :user
+
+class room < ActiveRecord::Base
+|Column|Type|Options|
+|------|----|-------|
+|room|string|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+  has_many :user
+
+class tweet < ActiveRecord::Base
+|Column|Type|Options|
+|------|----|-------|
+|image|text|null: false, foreign_key: true|
+|text|text|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+  belongs_to :user
+  has_many :comment
