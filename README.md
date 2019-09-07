@@ -25,25 +25,26 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |:--:|:--:|:--:|
+|password|string|null: false|
 |name|string|null: false|
 |E-mail|string|null: false|
 
 - has_many :groups_users
 - has_many :groups, through: :groups_users
-- has_many :comment
-- has_many :tweet
+- has_many :comments
+- has_many :tweets
 
 |Column|Type|Options|
 |:--:|:--:|:--:|
-|comment|integer|null: false, foreign_key: true|
+|comment|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
-- has_many :tweet
+- has_many :tweets
 - belongs_to :user
 
 |Column|Type|Options|
 |:--:|:--:|:--:|
-|group|string|null: false, foreign_key: true|
+|group|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 - has_many :groups_users
@@ -51,12 +52,12 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |:--:|:--:|:--:|
-|image|text|null: false, foreign_key: true|
-|text|text|null: false, foreign_key: true|
+|image|text|null: false|
+|text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
-- belongs_to :user
-- has_many :comment
+- belongs_to :users
+- has_many :comments
 
 |Column|Type|Options|
 |:--:|:--:|:--:|
