@@ -40,9 +40,9 @@
     .rightcontent__textarea
       %form
         .rightcontent__textarea__message
-          %input.input-box{:placeholder => "type a message", :type => "text"}/
+          %input.input-box{placeholder: "type a message", type: "text"}/
           %label.rightcontent__textarea__message
             = fa_icon 'image',class: 'icon'
-            %input.message_image{:type => 'file'}/
+            %input.message_image{type: 'file'}/
         .rightcontent__textarea__send
           %input.send{type: 'submit', value: 'Send'}
