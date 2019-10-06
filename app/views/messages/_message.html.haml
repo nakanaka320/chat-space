@@ -1,0 +1,10 @@
+.rightcontent__message
+  .rightcontent__message__name
+    = message.user.name
+  .rightcontent_time
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+- if message.content.present?
+  %p.rightcontent__message__a 
+    = message.content
+- if message.image.present?
+  = image_tag message.image.url, class: 'rightcontent__message__a'

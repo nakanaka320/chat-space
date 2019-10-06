@@ -3,7 +3,7 @@
   .leftcontent{
     display: flex;
     width: 300px;
-    height: 100%;
+    background: #253141;
     &__header{
       .leftcontent__config{
         display: flex;
@@ -31,13 +31,17 @@
       }
       }
     .leftcontent__roomlist{
-      height: calc(100vh - 80px);
+      height: calc(100vh - 100px);
       background: #2f3e51;
       width: 300px;
+      overflow: scroll;
       &__roomname{
         padding: 20px 20px 5px 20px;
         font-size: 15px;
         color:#ffffff;
+        a{
+          color: #ffffff;
+        }
         &__firstmessage{
           font-size: 11px;
           padding: 5px 20px 40px 0px;
@@ -49,6 +53,7 @@
   .rightcontent{
     height: 100%;
     width: 100%;
+    overflow: scroll;
     &__roomedit{
       height: 100px;
       position: relative;
@@ -84,6 +89,7 @@
     .rightcontent__messageslist{
       height: calc(100vh - 200px);
       background: #fafafa;
+      overflow: scroll;
       .rightcontent__message{
         color: #434a54;
         font-size: 16px;
@@ -121,25 +127,20 @@
       }
       .icon{
         position: absolute;
-        left: 950px;
-        top:20px;
+        right: 130px;
+        top: 18px;
       }
       .message_image{
         display:none;
         }
       }
-    .send{
-      position: absolute;
+      .rightcontent__textarea__send{
       margin-left: 15px;
       padding: 0 30px;
       width: calc(100%w - 45px);
-      border: none;
-      float: right;
       font-size: 16px;
       background: #38AEF0;
       color: #FFFFFF;
-      left: 1280px;
-      bottom: 27px;
       height: 52px;
     }
   }

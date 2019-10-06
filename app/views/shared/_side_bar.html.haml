@@ -1,0 +1,21 @@
+.leftcontent
+  .leftcontent__header
+    .leftcontent__config
+      .leftcontent__config__user
+        = current_user.name
+      .leftcontent__config__iconbox
+        .leftcontent__config__iconbox__brush
+          = link_to new_group_path do
+            = fa_icon 'paint-brush'
+        .leftcontent__config__iconbox__cog
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
+
+    .leftcontent__roomlist
+      - current_user.groups.each do |group|
+        .leftcontent__roomlist__roomname
+          = link_to group_messages_path(group) do
+            .leftcontent__roomlist__roomname__firstmessage
+              = group.name
+            .group__message
+              = group.show_last_message

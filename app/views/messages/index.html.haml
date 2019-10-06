@@ -1,48 +1,106 @@
+-# .toppage
+-#   -# .header
+-#   -#   グループを作成しました
+-#   .leftcontent
+-#     .leftcontent__header
+-#       光夫
+-#       .leftcontent__config__iconbox
+-#         .leftcontent__config__iconbox__brush
+-#           = link_to new_group_path do
+-#             = fa_icon 'paint-brush'
+-#             %span<>
+-#         .leftcontent__config__iconbox__cog
+-#           = link_to edit_user_path(current_user)  do
+-#             =fa_icon 'cog'
+-#             %span<>
+-#       .leftcontent__roomlist
+-#         - current_user.groups.each do |group|
+-#           .leftcontent__roomlist__roomname
+-#             = link_to group_messages_path(group) do
+-#               .leftcontent__roomlist__roomname__firstmessage
+-#                 = group.name
+
+-#   .rightcontent
+-#     .rightcontent__roomedit
+-#       .rightcontent__roomname
+-#         roomname
+-#         .rightcontent__roomname__memberlist
+-#           menbername
+-#         .rightcontent__edit
+-#           = link_to 'edit' 
+-#           -# edit_group_path(@group) do
+-#           -# .rightcontent__edit__text
+          
+-#             -# edit_group_path(params[:group_id]) do
+-#     .rightcontent__messageslist
+-#       .rightcontent__message
+-#         massge
+-#         .rightcontent_time
+-#           time day
+-#       .rightcontent__message__a
+-#         コメント
+
+-#     .rightcontent__textarea
+-#       %form
+-#         .rightcontent__textarea__message
+-#           %input.input-box{placeholder: "type a message", type: "text"}/
+-#           %label.rightcontent__textarea__message
+-#             = fa_icon 'image',class: 'icon'
+-#             %input.message_image{type: 'file'}/
+-#         .rightcontent__textarea__send
+-#           %input.send{type: 'submit', value: 'Send'}
+
+-# .wrapper
+
+  
 .toppage
+  = render 'shared/side_bar'
   -# .header
   -#   グループを作成しました
-  .leftcontent
-    .leftcontent__header
-      .leftcontent__config
-        .leftcontent__config__user
-          光夫
-        .leftcontent__config__iconbox
-          .leftcontent__config__iconbox__brush
-            = link_to messages_path do
-              = fa_icon 'paint-brush'
-              %span<>
-          .leftcontent__config__iconbox__cog
-            = link_to messages_path method: :create do
-              =fa_icon 'cog'
-              %span<>
-      .leftcontent__roomlist
-        .leftcontent__roomlist__roomname
-          roomname
-          .leftcontent__roomlist__roomname__firstmessage
-            hallo
+  -# .leftcontent
+  -#   .leftcontent__header
+  -#     .leftcontent__config
+  -#       .leftcontent__config__user
+  -#         光夫
+  -#       .leftcontent__config__iconbox
+  -#         .leftcontent__config__iconbox__brush
+  -#           = link_to new_group_path do
+  -#             = fa_icon 'paint-brush'
+  -#             %span<>
+  -#         .leftcontent__config__iconbox__cog
+  -#           = link_to edit_user_path(current_user) do
+  -#             =fa_icon 'cog'
+  -#             %span<>
+  -#     .leftcontent__roomlist
+  -#       .leftcontent__roomlist__roomname
+  -#         roomname
+  -#         .leftcontent__roomlist__roomname__firstmessage
+  -#           hallo
 
   .rightcontent
     .rightcontent__roomedit
       .rightcontent__roomname
-        roomname
+        = @group.name
         .rightcontent__roomname__memberlist
           menbername
-          .rightcontent__edit
-            Edit
-    .rightcontent__messageslist
-      .rightcontent__message
-        massge
-        .rightcontent_time
-          time day
-      .rightcontent__message__a
-        コメント
+          = link_to edit_group_path(@group.id) do
+            .rightcontent__edit
+              Edit
+    -# .rightcontent__messageslist
+    -#   .rightcontent__message
+    -#     massage
+    -#   .rightcontent_time
+    -#     time day
+    -#   .rightcontent__message__a
+    -#     コメント
 
+    .rightcontent__messageslist
+      = render @messages
     .rightcontent__textarea
-      %form
+      = form_for [@group, @message] do |f|
         .rightcontent__textarea__message
-          %input.input-box{placeholder: "type a message", type: "text"}/
-          %label.rightcontent__textarea__message
-            = fa_icon 'image',class: 'icon'
-            %input.message_image{type: 'file'}/
-        .rightcontent__textarea__send
-          %input.send{type: 'submit', value: 'Send'}
+          = f.text_field :content, class: 'rightcontent__textarea__message', placeholder: 'type a message'
+          = f.label :image, class: 'input__file' do
+            = fa_icon 'picture-o',class: 'icon'
+            = f.file_field :image, class: 'message_image'
+          = f.submit 'Send', class: 'rightcontent__textarea__send'
