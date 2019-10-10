@@ -32,10 +32,13 @@ $('#new_message').on('submit', function(e){
   .done(function(data) {
     var html = buildHTML(data);
     $('.rightcontent__messageslist').append(html);
-    $('.rightcontent__messageslist').animate({scrollTop: 'fast'});  
+    $('.rightcontent__messageslist').animate({scrollTop: $('.rightcontent__messageslist')[0].scrollHeight},
+    0);
+    $('send')[0].reset();
   })
   .fail(function(){
     alert('error');
   })
+  return false;
   })
 });
