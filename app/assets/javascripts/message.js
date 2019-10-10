@@ -9,6 +9,7 @@ $(function() {
                     </div>
                     <p class="rightcontent__message__a">
                       ${message.content}
+                      ${message.image}
                     </p>`
     return html;
               };
@@ -29,9 +30,11 @@ $('#new_message').on('submit', function(e){
   })
 
   .done(function(data) {
-    console.log(data)
     var html = buildHTML(data);
     $('.rightcontent__messageslist').append(html);
+  })
+  .fail(function(){
+    alert('error');
   })
   })
 });
