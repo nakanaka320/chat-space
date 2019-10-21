@@ -29,12 +29,12 @@
       %label.chat-group-form__label{for: "chat_group_チャットメンバー"} チャットメンバー
     .chat-group-form__field--right
       .chat-group-user.clearfix.js-chat-member
-        %input#group_user_ids{:name => "group[user_ids][]", :type => "hidden"}
+        = f.hidden_field :user_id, value: current_user.id 
         
       .chat-group-users#js-add-user
         - @group.users.each do |user|
           .chat-group-user
-            %input{name: 'group[user_ids][]', type: 'hidden',value: current_user.id}/
+            = f.hidden_field :user_id, value: current_user.id 
             = user.name
             .chat-group-user__names
               .chat-group-user__name
