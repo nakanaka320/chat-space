@@ -31,6 +31,7 @@ $('#new_message').on('submit', function(e){
 
   .done(function(data) {
     var html = buildHTML(data);
+    // debugger;
     $('.rightcontent__messageslist').append(html);
     $('.rightcontent__messageslist').animate({scrollTop: $('.rightcontent__messageslist')[0].scrollHeight},
     0);
