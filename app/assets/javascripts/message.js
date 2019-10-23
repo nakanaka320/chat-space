@@ -61,7 +61,7 @@ $('#new_message').on('submit', function(e){
       $('.rightcontent__messageslist').animate({scrollTop: $('.rightcontent__messageslist')[0].scrollHeight},1000);
     })
     .fail(function() {
-      console.log('alert');
+      alert('error');
      });
     };
   }
