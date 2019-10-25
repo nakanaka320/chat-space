@@ -19,10 +19,10 @@
     .chat-group-form__search.clearfix
       %input#user-search-field.chat-group-form__input{:placeholder => "追加したいユーザー名を入力してください", :type => "text"}/
       #user-search-result
-      -# .chat-group-user.clearfix{id: "UserId{user.id}"}
-        -# %p.chat-group-user__name ユーザー名
-      -#   .user-search-add.chat-group-user__btn.chat-group-user__btn--add{  "data-user-name" => "ユーザー名"} 追加
-      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+      -# -# .chat-group-user.clearfix{id: "UserId{user.id}"}
+      -#   -# %p.chat-group-user__name ユーザー名
+      -# -#   .user-search-add.chat-group-user__btn.chat-group-user__btn--add{  "data-user-name" => "ユーザー名"} 追加
+      -# / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
@@ -35,6 +35,7 @@
         - @group.users.each do |user|
           .chat-group-user
             = hidden_field_tag 'group[user_ids][]', user.id
+            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
             = user.name
             .chat-group-user__names
               .chat-group-user__name

@@ -60,4 +60,7 @@ $(function(){
     $(this).parent().remove();
     });
   });
+  $(".user-search-remove").on("click", function(){
+    $(this).parent().remove();
+    });
 });
