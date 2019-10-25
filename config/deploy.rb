@@ -24,8 +24,7 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 
 # Unicornの設定ファイルの場所
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
-set :keep_releases, 5
-
+set :keep_releases, 
 
 set :default_env, {
   rbenv_root: "/usr/local/rbenv",

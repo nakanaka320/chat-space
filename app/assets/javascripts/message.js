@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var image = (message.image) ? `<img src ="${message.image}" class="post_image"></img>` : "";
+    var image = (message.image) ? `<img src=${message.image} class="post_image"></img>` : "";
     var html = `<div class="rightcontent__message" data-id=${message.id}>
                   <div class="rightcontent__message__name">
                     ${message.user_name}
@@ -66,6 +66,6 @@ $('#new_message').on('submit', function(e){
     };
   }
     $(function() {
-      setInterval(reloadMessages, 5000);
+      setInterval(reloadMessages,  15000);
     });
   });
