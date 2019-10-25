@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var image = (message.image) ? `<img src=${message.image} class="post_image">` : "";
+    var image = (message.image) ? `<img src ="${message.image}" class="post_image"></img>` : "";
     var html = `<div class="rightcontent__message" data-id=${message.id}>
                   <div class="rightcontent__message__name">
                     ${message.user_name}
@@ -34,7 +34,7 @@ $('#new_message').on('submit', function(e){
   .done(function(data) {
     var html = buildHTML(data);
     $('.rightcontent__messageslist').append(html);
-    $('.rightcontent__messageslist').animate({scrollTop: $('.rightcontent__messageslist')[0]},1000);
+    $('.rightcontent__messageslist').animate({scrollTop: $('.rightcontent__messageslist')[0].scrollHeight},1000);
     $('form')[0].reset();
   })
   .fail(function(){
@@ -66,6 +66,6 @@ $('#new_message').on('submit', function(e){
     };
   }
     $(function() {
-      setInterval(reloadMessages,  15000);
+      setInterval(reloadMessages, 5000);
     });
   });
